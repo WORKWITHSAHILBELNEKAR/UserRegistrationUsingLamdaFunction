@@ -1,49 +1,65 @@
 package com.BL.java.UserRegistrationUsingLamda;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
-
+import static org.junit.jupiter.api.Assertions.*;
 
 class UserRegistrationUsingLamdaFunctionTest {
 
-
     @Test
-    public void testFirstName() {
-        assertTrue(UserRegistration.validateFirstName("John"));
-        assertFalse(UserRegistration.validateFirstName("john"));
+    public void testValidFirstName() {
+        Assert.assertTrue(UserRegistrationUsingLamdaFunction.UserRegistration.validateFirstName("Sahil"));
     }
 
     @Test
-    public void testLastName() {
-        assertTrue(UserRegistration.ValidateLastName("Doe"));
-        assertFalse(UserRegistration.ValidateLastName("doe"));
+    public void testInvalidFirstName() {
+        Assert.assertFalse(UserRegistrationUsingLamdaFunction.UserRegistration.validateFirstName("sahil"));
     }
 
     @Test
-    public void testEmail() {
-        assertTrue(UserRegistration.ValidEmail("abc.xyz@bl.co.in"));
-        assertFalse(UserRegistration.ValidEmail("abc@bl@com"));
+    public void testValidLastName() {
+        Assert.assertTrue(UserRegistrationUsingLamdaFunction.UserRegistration.ValidateLastName("Doe"));
     }
 
     @Test
-    public void testPhoneNumber() {
-        assertTrue(UserRegistration.ValidPhoneNumber("919876543210"));
-        assertFalse(UserRegistration.ValidPhoneNumber("19876543210"));
+    public void testInvalidLastName() {
+        Assert.assertFalse(UserRegistrationUsingLamdaFunction.UserRegistration.ValidateLastName("doe"));
     }
 
     @Test
-    public void testPassword() {
-        assertTrue(UserRegistration.validatePasswordMinLength("Password1!"));
-        assertFalse(UserRegistration.validatePasswordMinLength("Pass1!"));
+    public void testValidEmail() {
+        Assert.assertTrue(UserRegistrationUsingLamdaFunction.UserRegistration.ValidEmail("abc.xyz@bl.co.in"));
+    }
 
-        assertTrue(UserRegistration.validatePasswordUpperCase("Password1!"));
-        assertFalse(UserRegistration.validatePasswordUpperCase("password1!"));
+    @Test
+    public void testInvalidEmail() {
+        Assert.assertFalse(UserRegistrationUsingLamdaFunction.UserRegistration.ValidEmail("abc.xyz@bl@co.in"));
+    }
 
-        assertTrue(UserRegistration.validatePasswordNumeric("Password1!"));
-        assertFalse(UserRegistration.validatePasswordNumeric("Password!"));
+    @Test
+    public void testValidMobile() {
+        Assert.assertTrue(UserRegistrationUsingLamdaFunction.UserRegistration.ValidPhoneNumber("91 9919819801"));
+    }
 
-        assertTrue(UserRegistration.validatePasswordSpecialChar("Password1!"));
-        assertFalse(UserRegistration.validatePasswordSpecialChar("Password1"));
+    @Test
+    public void testInvalidMobile() {
+        Assert.assertFalse(UserRegistrationUsingLamdaFunction.UserRegistration.ValidPhoneNumber("919919819801"));
+    }
+
+    @Test
+    public void testValidPassword() {
+        Assert.assertTrue(UserRegistrationUsingLamdaFunction.UserRegistration.validatePasswordMinLength("Password@123"));
+        Assert.assertTrue(UserRegistrationUsingLamdaFunction.UserRegistration.validatePasswordUpperCase("Password@123"));
+        Assert.assertTrue(UserRegistrationUsingLamdaFunction.UserRegistration.validatePasswordNumeric("Password@123"));
+        Assert.assertTrue(UserRegistrationUsingLamdaFunction.UserRegistration.validatePasswordSpecialChar("Password@123"));
+    }
+
+    @Test
+    public void testInvalidPassword() {
+        Assert.assertFalse(UserRegistrationUsingLamdaFunction.UserRegistration.validatePasswordMinLength("pass"));
+        Assert.assertFalse(UserRegistrationUsingLamdaFunction.UserRegistration.validatePasswordUpperCase("password123"));
+        Assert.assertFalse(UserRegistrationUsingLamdaFunction.UserRegistration.validatePasswordNumeric("Password@"));
+        Assert.assertFalse(UserRegistrationUsingLamdaFunction.UserRegistration.validatePasswordSpecialChar("Password123"));
     }
 }
