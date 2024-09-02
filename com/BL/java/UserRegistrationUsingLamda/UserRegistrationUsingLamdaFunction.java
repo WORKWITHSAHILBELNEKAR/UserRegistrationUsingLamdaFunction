@@ -33,6 +33,11 @@ public class UserRegistrationUsingLamdaFunction {
          return password.length() >= 8;
      }
 
+     // UC6 - Password At least 1 Upper Case Validation
+     public static boolean validatePasswordUpperCase(String password) {
+         return Pattern.matches(".*[A-Z].*", password);
+     }
+
 
  }
 }
