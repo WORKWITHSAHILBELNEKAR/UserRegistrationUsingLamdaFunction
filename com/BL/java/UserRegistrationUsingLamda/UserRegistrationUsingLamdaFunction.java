@@ -4,7 +4,8 @@ import java.util.regex.Pattern;
 
 public class UserRegistrationUsingLamdaFunction {
 
- public class UserRegistration {
+
+    public class UserRegistration {
 
   // UC1 validate first name
      public static boolean validateFirstName(String firstName) {
@@ -47,6 +48,13 @@ public class UserRegistrationUsingLamdaFunction {
          return Pattern.matches(".*[!@#$%^&*()].*", password);
      }
 
+     //UC 9 - Should clear all email sample provided separately
 
- }
+        public static boolean validateEmailSamples(String email) {
+            return Pattern.matches("^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\\.[a-zA-Z]{2,6}(\\.[a-zA-Z]{2,6})?$", email);
+        }
+
+
+
+    }
 }
