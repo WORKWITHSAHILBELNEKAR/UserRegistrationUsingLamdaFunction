@@ -42,6 +42,10 @@ public class UserRegistrationUsingLamdaFunction {
      public static boolean validatePasswordNumeric(String password) {
          return Pattern.matches(".*[0-9].*", password);
      }
+     // UC8 - Password Exactly 1 Special Character Validation
+     public static boolean validatePasswordSpecialChar(String password) {
+         return Pattern.matches(".*[!@#$%^&*()].*", password);
+     }
 
 
  }
