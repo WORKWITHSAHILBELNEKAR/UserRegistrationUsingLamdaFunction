@@ -38,6 +38,11 @@ public class UserRegistrationUsingLamdaFunction {
          return Pattern.matches(".*[A-Z].*", password);
      }
 
+     // UC7 - Password At least 1 Numeric Validation
+     public static boolean validatePasswordNumeric(String password) {
+         return Pattern.matches(".*[0-9].*", password);
+     }
+
 
  }
 }
