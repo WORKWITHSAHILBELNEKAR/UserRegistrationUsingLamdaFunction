@@ -28,6 +28,11 @@ public class UserRegistrationUsingLamdaFunction {
          return Pattern.matches("^[0-9]{2}[0-9]{10}$" , Phone);
     }
 
+    // UC5 - Password Minimum Length Validation
+     public static boolean validatePasswordMinLength(String password) {
+         return password.length() >= 8;
+     }
+
 
  }
 }
