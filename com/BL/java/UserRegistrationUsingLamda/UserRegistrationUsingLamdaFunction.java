@@ -4,9 +4,15 @@ import java.util.regex.Pattern;
 
 public class UserRegistrationUsingLamdaFunction {
 
+    class InvalidUserDetailException extends Exception {
+        public InvalidUserDetailException(String message) {
+            super(message);
+        }
+    }
     public interface Validation {
         boolean validate(String input);
     }
+
 
     public static class UserRegistration {
 
