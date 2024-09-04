@@ -4,57 +4,42 @@ import java.util.regex.Pattern;
 
 public class UserRegistrationUsingLamdaFunction {
 
-
-    public class UserRegistration {
-
-  // UC1 validate first name
-     public static boolean validateFirstName(String firstName) {
-     return Pattern.matches("^[A-Z][a-zA-Z]{2,}$", firstName);
-  }
-
-  // UC2 Enter a valid last Name
-     public static boolean ValidateLastName (String LastName){
-         return Pattern.matches("^[A-Z][a-zA-Z]{2,}$", LastName);
-     }
-
-  //UC3 Enter the valid email
-
-     public static Boolean ValidEmail (String Email){
-         return Pattern.matches("^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\\.[a-zA-Z]{2,6}(\\.[a-zA-Z]{2,6})?$", Email);
-     }
-
-  //UC4 Enter a valid phone no
-
-    public static boolean ValidPhoneNumber (String Phone){
-         return Pattern.matches("^[0-9]{2}[0-9]{10}$" , Phone);
+    public interface Validation {
+        boolean validate(String input);
     }
 
-    // UC5 - Password Minimum Length Validation
-     public static boolean validatePasswordMinLength(String password) {
-         return password.length() >= 8;
-     }
+    public static class UserRegistration {
 
-     // UC6 - Password At least 1 Upper Case Validation
-     public static boolean validatePasswordUpperCase(String password) {
-         return Pattern.matches(".*[A-Z].*", password);
-     }
+        // UC1: Validate First Name
+        public static Validation validateFirstName = firstName ->
+                Pattern.matches("^[A-Z][a-zA-Z]{2,}$", firstName);
 
-     // UC7 - Password At least 1 Numeric Validation
-     public static boolean validatePasswordNumeric(String password) {
-         return Pattern.matches(".*[0-9].*", password);
-     }
-     // UC8 - Password Exactly 1 Special Character Validation
-     public static boolean validatePasswordSpecialChar(String password) {
-         return Pattern.matches(".*[!@#$%^&*()].*", password);
-     }
+        // UC2: Validate Last Name
+        public static Validation validateLastName = lastName ->
+                Pattern.matches("^[A-Z][a-zA-Z]{2,}$", lastName);
 
-     //UC 9 - Should clear all email sample provided separately
+        // UC3: Validate Email
+        public static Validation validateEmail = email ->
+                Pattern.matches("^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\\.[a-zA-Z]{2,6}(\\.[a-zA-Z]{2,6})?$", email);
 
-        public static boolean validateEmailSamples(String email) {
-            return Pattern.matches("^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\\.[a-zA-Z]{2,6}(\\.[a-zA-Z]{2,6})?$", email);
-        }
+        // UC4: Validate Phone Number
+        public static Validation validatePhoneNumber = phoneNumber ->
+                Pattern.matches("^[0-9]{2}\\s[0-9]{10}$", phoneNumber);
 
+        // UC5: Password Minimum Length Validation
+        public static Validation validatePasswordMinLength = password ->
+                password.length() >= 8;
 
+        // UC6: Password At Least 1 Upper Case Validation
+        public static Validation validatePasswordUpperCase = password ->
+                Pattern.matches(".*[A-Z].*", password);
 
+        // UC7: Password At Least 1 Numeric Validation
+        public static Validation validatePasswordNumeric = password ->
+                Pattern.matches(".*[0-9].*", password);
+
+        // UC8: Password Exactly 1 Special Character Validation
+        public static Validation validatePasswordSpecialChar = password ->
+                Pattern.matches(".*[!@#$%^&*()].*", password);
     }
 }
